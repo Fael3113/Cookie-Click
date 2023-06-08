@@ -4,6 +4,7 @@
  */
 package cookie.clicker;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 /**
@@ -19,14 +21,13 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class Jogo extends javax.swing.JFrame {
-
     /**
      * Creates new form Jogo
      */
     public Jogo() {
         initComponents();
     }
-     public int counter;
+    public int counter;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,40 +38,26 @@ public class Jogo extends javax.swing.JFrame {
     private void initComponents() {
 
         painel1 = new cookie.clicker.Painel();
-        painel3 = new cookie.clicker.Painel();
         lblPontos = new javax.swing.JLabel();
         btnClick = new javax.swing.JButton();
         txtPontos = new javax.swing.JTextField();
+        btnResetar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mbtnSalvar = new javax.swing.JMenuItem();
         mbtnCarregar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         painel1.setImg(new ImageIcon("src/imagens/black_hole.jpg")
-        );
-
-        painel3.setForeground(new java.awt.Color(60, 63, 65));
-        painel3.setImg(new ImageIcon("src/imagens/Cookie_JE2_BE2.jpg")
-        );
-
-        javax.swing.GroupLayout painel3Layout = new javax.swing.GroupLayout(painel3);
-        painel3.setLayout(painel3Layout);
-        painel3Layout.setHorizontalGroup(
-            painel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        painel3Layout.setVerticalGroup(
-            painel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 116, Short.MAX_VALUE)
         );
 
         lblPontos.setBackground(new java.awt.Color(255, 51, 51));
         lblPontos.setForeground(new java.awt.Color(255, 255, 255));
 
         btnClick.setBackground(new java.awt.Color(102, 51, 0));
-        btnClick.setText("Click");
+        btnClick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cookie_JE2_BE2.jpg"))); // NOI18N
         btnClick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClickActionPerformed(evt);
@@ -78,37 +65,42 @@ public class Jogo extends javax.swing.JFrame {
         });
 
         txtPontos.setEditable(false);
+        txtPontos.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPontos.setText("0");
+
+        btnResetar.setBackground(new java.awt.Color(102, 51, 0));
+        btnResetar.setText("Reset");
+        btnResetar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painel1Layout = new javax.swing.GroupLayout(painel1);
         painel1.setLayout(painel1Layout);
         painel1Layout.setHorizontalGroup(
             painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel1Layout.createSequentialGroup()
-                .addContainerGap(392, Short.MAX_VALUE)
-                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnClick, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                    .addComponent(painel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(141, 141, 141))
             .addGroup(painel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblPontos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPontos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtPontos)
+                    .addComponent(btnClick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnResetar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1514, Short.MAX_VALUE))
         );
         painel1Layout.setVerticalGroup(
             painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(lblPontos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtPontos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(painel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPontos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPontos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnClick)
-                .addGap(148, 148, 148))
+                .addGap(65, 65, 65)
+                .addComponent(btnResetar)
+                .addContainerGap(496, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -164,6 +156,10 @@ public class Jogo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mbtnCarregarActionPerformed
 
+    private void btnResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetarActionPerformed
+        txtPontos.setText("0");
+    }//GEN-LAST:event_btnResetarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,13 +197,13 @@ public class Jogo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClick;
+    private javax.swing.JButton btnResetar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lblPontos;
     private javax.swing.JMenuItem mbtnCarregar;
     private javax.swing.JMenuItem mbtnSalvar;
     private cookie.clicker.Painel painel1;
-    private cookie.clicker.Painel painel3;
     private javax.swing.JTextField txtPontos;
     // End of variables declaration//GEN-END:variables
     
