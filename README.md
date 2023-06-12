@@ -1,5 +1,7 @@
 # Cookie Click
 
-JDK 19
+Um joguinho simples de cookie click
+
+JDK: 19
 
 IDE usada: Apache Netbeans 18
