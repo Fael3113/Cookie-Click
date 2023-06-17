@@ -58,7 +58,7 @@ public class Jogo extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cookies");
 
-        btnCookie.setBackground(new java.awt.Color(102, 51, 0));
+        btnCookie.setBackground(new java.awt.Color(232, 150, 68));
         btnCookie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Cookie_JE2_BE2.jpg"))); // NOI18N
         btnCookie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +70,8 @@ public class Jogo extends javax.swing.JFrame {
         txtPontos.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPontos.setText("0");
 
-        btnResetar.setBackground(new java.awt.Color(102, 51, 0));
+        btnResetar.setBackground(new java.awt.Color(232, 150, 68));
+        btnResetar.setForeground(new java.awt.Color(0, 0, 0));
         btnResetar.setText("Reset");
         btnResetar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,11 +105,15 @@ public class Jogo extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(12, 12, 12)
                 .addComponent(txtPontos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
                 .addGroup(painel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCookie)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                    .addGroup(painel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(btnCookie)
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(186, 186, 186)))
                 .addComponent(btnResetar)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
