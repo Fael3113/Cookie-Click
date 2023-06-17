@@ -50,7 +50,7 @@ public class Jogo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        painel1.setImg(new ImageIcon("src/imagens/black_hole.jpg")
+        painel1.setImg(new ImageIcon("src/imagens/background.png")
         );
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -184,6 +184,7 @@ public class Jogo extends javax.swing.JFrame {
 
     private void btnResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetarActionPerformed
         txtPontos.setText("0");
+        jtxtMensagem.setText("");
     }//GEN-LAST:event_btnResetarActionPerformed
 
     /**
